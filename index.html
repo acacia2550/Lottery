@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ระบบสุ่มรางวัล</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ✅ Navbar -->
+ <nav class="navbar">
+  <div class="nav-container">
+    <span class="logo">ระบบสุ่มรางวัล</span>
+    <div class="nav-actions">
+      <span class="menu">หน้าแรก</span>
+      <button id="themeToggle" class="theme-toggle">🌙</button>
+    </div>
+  </div>
+</nav>
+
+  <div class="container">
+    <h1>ระบบสุ่มรางวัล</h1>
+
+    <div class="prizes">
+      <div class="box">
+        <h2>รางวัล 2 ตัว</h2>
+        <div class="number" id="prize2">--</div>
+      </div>
+      <div class="box">
+        <h2>รางวัล 3 ตัว</h2>
+        <div class="number" id="prize3">---</div>
+      </div>
+      <div class="box">
+        <h2>รางวัล 4 ตัว</h2>
+        <div class="number" id="prize4">----</div>
+      </div>
+    </div>
+
+    <button id="drawBtn">ออกรางวัล</button>
+    <div class="next-round" id="nextRound">งวดถัดไป: -</div>
+
+    <div class="history">
+      <h3>ประวัติการออกรางวัล</h3>
+      <ul id="historyList"></ul>
+    </div>
+  </div>
+
+  <!-- ✅ Footer -->
+  <footer class="footer">
+    <p>© 2025 ระบบสุ่มรางวัลทำเพื่อการเรียนรู้ นาย จิระนันท์ บุญใบ</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
