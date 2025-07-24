@@ -1,39 +1,19 @@
-/* === Theme Variables === */
-:root {
-  --bg-color: #fdfdfd;
-  --text-color: #111;
-  --primary-color: #ffd700;
-  --box-bg: #ffffff;
-  --nav-bg: #f5f5f5;
-  --footer-bg: #eaeaea;
-  --shadow: rgba(0, 0, 0, 0.2);
-}
+/* === Import Fonts === */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap');
 
-body.dark-mode {
-  --bg-color: #111;
-  --text-color: #fff;
-  --primary-color: #ffd700;
-  --box-bg: #1a1a1a;
-  --nav-bg: #222;
-  --footer-bg: #1c1c1c;
-  --shadow: rgba(255, 255, 255, 0.1);
-}
-
-/* === Global Styling === */
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: 'Kanit', sans-serif;
   margin: 0;
   padding: 0;
-  transition: background 0.3s, color 0.3s;
-  background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+  font-family: 'Kanit', sans-serif;
+  background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+  color: #fff;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png'); /* เท็กเจอร์ */
 }
 
 /* === Navbar === */
 .navbar {
-  background-color: var(--nav-bg);
-  box-shadow: 0 2px 8px var(--shadow);
+  background: #1c1c1c;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   padding: 15px 30px;
   position: sticky;
   top: 0;
@@ -44,29 +24,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .logo {
-  font-size: 20px;
-  color: var(--primary-color);
-  font-weight: bold;
   text-shadow: 0 0 5px #ffd700aa;
 }
 
-.nav-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* === Boxes, Button, Footer updated to use variables === */
+/* === Container === */
 .container {
   padding: 40px 20px 100px;
   max-width: 1000px;
@@ -74,28 +41,52 @@ body {
   text-align: center;
 }
 
+h1 {
+  color: #ffd700;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #ffd70080;
+  font-size: 36px;
+}
+
+/* === Prize Boxes === */
+.prizes {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
 .box {
-  background-color: var(--box-bg);
+  background: radial-gradient(circle at top left, #333, #111);
   border-radius: 12px;
-  box-shadow: 0 0 15px var(--shadow);
+  box-shadow: 0 0 15px #ffd70050;
   padding: 25px;
   width: 150px;
   transition: transform 0.2s ease;
 }
 
+.box:hover {
+  transform: scale(1.05);
+}
+
 .box h2 {
-  color: var(--primary-color);
+  margin: 0;
+  color: #ffd700;
 }
 
 .number {
-  background: var(--primary-color);
+  font-size: 32px;
+  background: #ffd700;
   color: #000;
   padding: 12px;
   margin-top: 10px;
   border-radius: 8px;
   font-weight: bold;
+  box-shadow: inset 0 0 5px #00000066;
 }
 
+/* === Button === */
 button#drawBtn {
   background: linear-gradient(to bottom, #ffe066, #ffcc00);
   color: #222;
@@ -104,18 +95,55 @@ button#drawBtn {
   border: none;
   border-radius: 12px;
   cursor: pointer;
+  box-shadow: 0 4px 8px #00000099;
   font-weight: bold;
-  box-shadow: 0 4px 8px var(--shadow);
+  transition: all 0.2s;
 }
 
-/* Footer */
-.footer {
-  background: var(--footer-bg);
-  color: #666;
-  text-align: center;
+button#drawBtn:hover {
+  background: #ffdf00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px #00000099;
+}
+
+/* === Next Round === */
+.next-round {
+  margin-top: 20px;
+  color: #ddd;
+  font-size: 16px;
+}
+
+/* === History === */
+.history {
+  margin-top: 50px;
+  text-align: left;
+  background-color: #1a1a1a;
+  border-radius: 10px;
   padding: 20px;
+  box-shadow: 0 0 10px #00000088;
+}
+
+.history h3 {
+  color: #ffd700;
+  margin-bottom: 15px;
+}
+
+.history ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 15px;
+  color: #ccc;
+}
+
+/* === Footer === */
+.footer {
+  background: #1c1c1c;
+  padding: 20px;
+  color: #aaa;
+  text-align: center;
   position: fixed;
   width: 100%;
   bottom: 0;
-  border-top: 1px solid #ccc;
+  font-size: 14px;
+  border-top: 1px solid #333;
 }
