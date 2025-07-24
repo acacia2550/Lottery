@@ -41,6 +41,7 @@
     <label>3 ตัว: <input type="text" id="buy3" maxlength="3" placeholder="เช่น 456"></label>
     <label>4 ตัว: <input type="text" id="buy4" maxlength="4" placeholder="เช่น 7890"></label>
     <button id="buyBtn">ซื้อเลข</button>
+    <button id="refreshBtn">🔄 รีเฟรชหน้า</button>
   </div>
   <div id="buyList" class="buy-list">
     <strong>เลขที่ซื้อไว้:</strong>
@@ -61,6 +62,10 @@
     <p>© 2025 ระบบสุ่มรางวัล นาย จิระนันท์ บุญใบ 6721901002</p>
   </footer>
 
-  <script src="script.js"></script>
+<script>
+  document.getElementById("refreshBtn").addEventListener("click", function () {
+    location.reload();
+  });
+</script>
 </body>
 </html>
