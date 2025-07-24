@@ -1,7 +1,7 @@
 /* === Layout Base === */
 body {
   background-color: #111;
-  color: #000000;
+  color: #fdfdfd;
   font-family: 'Kanit', sans-serif;
   text-align: center;
   margin: 0;
@@ -14,9 +14,9 @@ body {
 
 /* === Navbar === */
 .navbar {
-  background-color: #222;
+  background-color: #000000;
   padding: 15px 20px;
-  box-shadow: 0 0 10px #000;
+  box-shadow: 0 0 10px #8a8702;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -44,7 +44,7 @@ h1 {
 }
 
 .box {
-  background-color: #222;
+  background-color: #000000;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px #ffd70080;
@@ -54,7 +54,7 @@ h1 {
 .number {
   font-size: 32px;
   background: #ffd700;
-  color: #000;
+  color: #000000;
   padding: 10px;
   margin-top: 10px;
   border-radius: 8px;
@@ -64,7 +64,7 @@ h1 {
 /* === Button === */
 button#drawBtn {
   background-color: #ffd700;
-  color: black;
+  color: rgb(0, 0, 0);
   font-size: 18px;
   padding: 10px 20px;
   border: none;
@@ -80,7 +80,7 @@ button#drawBtn:hover {
 /* === Next Round & History === */
 .next-round {
   margin-top: 20px;
-  color: #000000;
+  color: #fffefe;
   font-size: 16px;
 }
 
@@ -100,7 +100,7 @@ button#drawBtn:hover {
 .footer {
   background-color: #222;
   padding: 20px;
-  color: #000000;
+  color: #f7f7f7;
   text-align: center;
   position: fixed;
   width: 100%;
@@ -145,7 +145,7 @@ button#drawBtn:hover {
   padding: 10px;
   font-weight: bold;
   background-color: #00cc66;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 8px;
   cursor: pointer;
