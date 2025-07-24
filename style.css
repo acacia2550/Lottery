@@ -147,3 +147,54 @@ button#drawBtn:hover {
   font-size: 14px;
   border-top: 1px solid #333;
 }
+
+/* === Buy Section === */
+.buy-section {
+  margin-top: 30px;
+  background: var(--box-bg);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px var(--shadow);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buy-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.buy-form label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buy-form input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: 'Kanit', sans-serif;
+  font-size: 16px;
+}
+
+.buy-form button {
+  padding: 10px;
+  font-weight: bold;
+  background-color: #00cc66;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.buy-list ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 15px;
+  color: var(--text-color);
+}

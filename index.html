@@ -33,6 +33,21 @@
     </div>
 
     <button id="drawBtn">ออกรางวัล</button>
+    <!-- 📌 เพิ่มฟอร์มซื้อเลข -->
+<div class="buy-section">
+  <h3>ซื้อเลขที่ต้องการ</h3>
+  <div class="buy-form">
+    <label>2 ตัว: <input type="text" id="buy2" maxlength="2" placeholder="เช่น 23"></label>
+    <label>3 ตัว: <input type="text" id="buy3" maxlength="3" placeholder="เช่น 456"></label>
+    <label>4 ตัว: <input type="text" id="buy4" maxlength="4" placeholder="เช่น 7890"></label>
+    <button id="buyBtn">ซื้อเลข</button>
+  </div>
+  <div id="buyList" class="buy-list">
+    <strong>เลขที่ซื้อไว้:</strong>
+    <ul></ul>
+  </div>
+</div>
+
     <div class="next-round" id="nextRound">งวดถัดไป: -</div>
 
     <div class="history">

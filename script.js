@@ -33,6 +33,42 @@ function getNextRoundDate(current = new Date()) {
   });
 }
 
+// === Buy Numbers Logic ===
+const buyData = {
+  "2": [],
+  "3": [],
+  "4": []
+};
+
+document.getElementById("buyBtn").addEventListener("click", () => {
+  const input2 = document.getElementById("buy2").value.trim();
+  const input3 = document.getElementById("buy3").value.trim();
+  const input4 = document.getElementById("buy4").value.trim();
+
+  if (input2.match(/^\d{2}$/)) buyData["2"].push(input2);
+  if (input3.match(/^\d{3}$/)) buyData["3"].push(input3);
+  if (input4.match(/^\d{4}$/)) buyData["4"].push(input4);
+
+  // เคลียร์ฟอร์ม
+  document.getElementById("buy2").value = '';
+  document.getElementById("buy3").value = '';
+  document.getElementById("buy4").value = '';
+
+  updateBuyList();
+});
+
+function updateBuyList() {
+  const ul = document.querySelector("#buyList ul");
+  ul.innerHTML = "";
+  for (let len of ["2", "3", "4"]) {
+    buyData[len].forEach(num => {
+      const li = document.createElement("li");
+      li.textContent = `ซื้อ ${len} ตัว: ${num}`;
+      ul.appendChild(li);
+    });
+  }
+}
+
 document.getElementById("drawBtn").addEventListener("click", async () => {
   const prize2 = document.getElementById("prize2");
   const prize3 = document.getElementById("prize3");
@@ -46,10 +82,20 @@ document.getElementById("drawBtn").addEventListener("click", async () => {
   const p3 = await spinNumber(prize3, 3);
   const p4 = await spinNumber(prize4, 4);
 
-  const historyList = document.getElementById("historyList");
   const now = new Date().toLocaleString("th-TH");
+
+  // ตรวจว่าถูกหรือไม่
+  const won2 = buyData["2"].includes(p2);
+  const won3 = buyData["3"].includes(p3);
+  const won4 = buyData["4"].includes(p4);
+
+  const resultText = `[${now}] ➤ 2 ตัว: ${p2} ${won2 ? "✅ ถูก!" : ""}
+                       | 3 ตัว: ${p3} ${won3 ? "✅ ถูก!" : ""}
+                       | 4 ตัว: ${p4} ${won4 ? "✅ ถูก!" : ""}`;
+
+  const historyList = document.getElementById("historyList");
   const item = document.createElement("li");
-  item.textContent = `[${now}] 2 ตัว: ${p2}, 3 ตัว: ${p3}, 4 ตัว: ${p4}`;
+  item.textContent = resultText;
   historyList.prepend(item);
 
   document.getElementById("nextRound").textContent = "งวดถัดไป: " + getNextRoundDate();
