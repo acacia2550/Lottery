@@ -64,7 +64,8 @@
 
 <script>
   document.getElementById("refreshBtn").addEventListener("click", function () {
-    location.reload();
+    const list = document.querySelector("#buyList ul");
+    list.innerHTML = ""; // ล้างรายการเลขที่ซื้อ
   });
 </script>
 </body>
