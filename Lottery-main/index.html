@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ระบบสุ่มรางวัล</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ✅ Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <span class="logo">ระบบสุ่มรางวัล</span>
+      <span class="menu">หน้าแรก</span>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>ระบบสุ่มรางวัล</h1>
+
+    <div class="prizes">
+      <div class="box">
+        <h2>รางวัล 2 ตัว</h2>
+        <div class="number" id="prize2">--</div>
+      </div>
+      <div class="box">
+        <h2>รางวัล 3 ตัว</h2>
+        <div class="number" id="prize3">---</div>
+      </div>
+      <div class="box">
+        <h2>รางวัล 4 ตัว</h2>
+        <div class="number" id="prize4">----</div>
+      </div>
+    </div>
+
+    <button id="drawBtn">คลิก</button>
+
+    <!-- ✅ ส่วนซื้อเลข -->
+    <div class="buy-section">
+      <h3>ซื้อเลขที่ต้องการ</h3>
+      <div class="buy-form">
+        <label>2 ตัว: <input type="text" id="buy2" maxlength="2" placeholder="เช่น 23"></label>
+        <label>3 ตัว: <input type="text" id="buy3" maxlength="3" placeholder="เช่น 456"></label>
+        <label>4 ตัว: <input type="text" id="buy4" maxlength="4" placeholder="เช่น 7890"></label>
+        <button id="buyBtn">ซื้อเลข</button>
+        <button id="refreshBtn"> รีเฟรชเลขที่ซื้อ</button>
+      </div>
+      <div id="buyList" class="buy-list">
+        <strong>เลขที่ซื้อไว้:</strong>
+        <ul></ul>
+      </div>
+    </div>
+
+    <div class="next-round" id="nextRound">งวดถัดไป: -</div>
+
+    <div class="history">
+      <h3>ประวัติการออกรางวัล</h3>
+      <ul id="historyList"></ul>
+    </div>
+  </div>
+
+  <!-- ✅ Footer -->
+  <footer class="footer">
+    <p>© 2025 ระบบสุ่มรางวัล นาย จิระนันท์ บุญใบ 6721901002</p>
+  </footer>
+
+  <!-- ✅ JavaScript ทั้งหมด -->
+  <script>
+function animateNumber(element, finalValue, duration = 1000) {
+  let current = 0;
+  const length = finalValue.length;
+  const intervalTime = 50;
+  let totalSteps = duration / intervalTime;
+  let step = 0;
+
+  const interval = setInterval(() => {
+    let temp = "";
+    for (let i = 0; i < length; i++) {
+      temp += Math.floor(Math.random() * 10); // หมุนเลขแต่ละหลัก
+    }
+    element.innerText = temp;
+    step++;
+    if (step >= totalSteps) {
+      clearInterval(interval);
+      element.innerText = finalValue;
+    }
+  }, intervalTime);
+}
+
+function drawPrizes() {
+  const prize2 = String(Math.floor(Math.random() * 100)).padStart(2, "0");
+  const prize3 = String(Math.floor(Math.random() * 1000)).padStart(3, "0");
+  const prize4 = String(Math.floor(Math.random() * 10000)).padStart(4, "0");
+
+  const el2 = document.getElementById("prize2");
+  const el3 = document.getElementById("prize3");
+  const el4 = document.getElementById("prize4");
+
+  animateNumber(el2, prize2, 1000); // หมุน 1 วินาที
+  setTimeout(() => animateNumber(el3, prize3, 1000), 1000); // หมุนต่ออีกตัว
+  setTimeout(() => animateNumber(el4, prize4, 1000), 2000); // หมุนอีกตัว
+
+  // เพิ่มประวัติหลังสุดท้ายหมุนเสร็จ
+  setTimeout(() => {
+    const history = document.getElementById("historyList");
+    const li = document.createElement("li");
+    li.textContent = `2 ตัว: ${prize2} | 3 ตัว: ${prize3} | 4 ตัว: ${prize4}`;
+    history.prepend(li);
+
+    const nextDate = new Date();
+    nextDate.setDate(nextDate.getDate() + 7);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById("nextRound").textContent =
+      "งวดถัดไป: " + nextDate.toLocaleDateString('th-TH', options);
+  }, 3000);
+}
+
+document.getElementById("drawBtn").addEventListener("click", drawPrizes);
+
+// ซื้อเลข
+document.getElementById("buyBtn").addEventListener("click", function () {
+  const buy2 = document.getElementById("buy2").value.trim();
+  const buy3 = document.getElementById("buy3").value.trim();
+  const buy4 = document.getElementById("buy4").value.trim();
+  const list = document.querySelector("#buyList ul");
+
+  if (buy2) {
+    const li = document.createElement("li");
+    li.textContent = "ซื้อเลข 2 ตัว: " + buy2;
+    list.appendChild(li);
+  }
+  if (buy3) {
+    const li = document.createElement("li");
+    li.textContent = "ซื้อเลข 3 ตัว: " + buy3;
+    list.appendChild(li);
+  }
+  if (buy4) {
+    const li = document.createElement("li");
+    li.textContent = "ซื้อเลข 4 ตัว: " + buy4;
+    list.appendChild(li);
+  }
+
+  document.getElementById("buy2").value = "";
+  document.getElementById("buy3").value = "";
+  document.getElementById("buy4").value = "";
+});
+
+// ล้างรายการซื้อ
+document.getElementById("refreshBtn").addEventListener("click", function () {
+  const list = document.querySelector("#buyList ul");
+  list.innerHTML = "";
+});
+</script>
+</body>
+</html>
